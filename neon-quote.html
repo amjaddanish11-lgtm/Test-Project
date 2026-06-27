@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neon Quote</title>
+    <style>
+        :root {
+            --neon: #0ff;
+            --neon-pink: #ff2bd6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #05010d;
+            font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+            padding: 2rem;
+            overflow: hidden;
+        }
+
+        .quote {
+            max-width: 700px;
+            text-align: center;
+        }
+
+        .quote p {
+            font-size: clamp(1.5rem, 5vw, 3rem);
+            font-weight: 700;
+            line-height: 1.3;
+            color: #fff;
+            text-shadow:
+                0 0 5px var(--neon),
+                0 0 10px var(--neon),
+                0 0 20px var(--neon),
+                0 0 40px var(--neon),
+                0 0 80px var(--neon);
+            animation: flicker 3s infinite alternate;
+        }
+
+        .quote cite {
+            display: block;
+            margin-top: 2rem;
+            font-size: clamp(1rem, 3vw, 1.4rem);
+            font-style: normal;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: #fff;
+            text-shadow:
+                0 0 5px var(--neon-pink),
+                0 0 10px var(--neon-pink),
+                0 0 25px var(--neon-pink);
+        }
+
+        @keyframes flicker {
+            0%, 18%, 22%, 25%, 53%, 57%, 100% {
+                opacity: 1;
+            }
+            20%, 24%, 55% {
+                opacity: 0.45;
+            }
+        }
+    </style>
+</head>
+<body>
+    <blockquote class="quote">
+        <p>"Stay hungry. Stay foolish."</p>
+        <cite>Steve Jobs</cite>
+    </blockquote>
+</body>
+</html>
