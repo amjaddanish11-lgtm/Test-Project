@@ -62,8 +62,8 @@
     <a class="wordmark" href="#top" aria-label="Reliable Sources — home">RELIABLE<span> SOURCES</span></a>
     <nav class="main-nav" aria-label="Main">
       <a href="#work">Real Work</a>
+      <a href="#studio">Design Studio</a>
       <a href="#method">Our Method</a>
-      <a href="#custom-quote">Get a Quote</a>
       <a href="#faq">FAQ</a>
     </nav>
     <a class="btn btn-wa btn-sm" data-wa href="https://wa.me/971563659384">
@@ -88,7 +88,7 @@
             <svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.4 14.1c-.2.6-1.3 1.2-1.8 1.3-.5 0-1 .2-3.4-.7-2.9-1.1-4.7-4-4.9-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.4l.9 2.1c0 .2.1.4 0 .6l-.4.6-.5.5c-.2.2-.3.3-.1.6.1.3.7 1.2 1.6 2 1.1 1 2 1.3 2.3 1.4.3.2.5.1.6-.1l.8-.9c.2-.3.4-.2.6-.1l2 .9c.3.2.5.2.6.4 0 .1 0 .7-.3 1.3Z"/></svg>
             Get My Logo Quote
           </a>
-          <a class="btn btn-ghost" href="#work">See Real Work</a>
+          <a class="btn btn-ghost" href="#studio">Design Yours Live</a>
         </div>
         <p class="hero-price">Fully custom &middot; <strong>design mockup</strong> with every WhatsApp quote</p>
       </div>
@@ -149,14 +149,62 @@
           <span>Send it on WhatsApp for a mockup &amp; custom quote.</span>
         </a>
       </div>
-      <div class="center reveal">
-        <a class="btn btn-wa" data-wa data-wa-msg="Hi! I saw your real work gallery. I'd like a similar custom neon sign — I'll send my logo / idea here." href="https://wa.me/971563659384">Want yours next? Send your logo</a>
+    </div>
+  </section>
+
+  <!-- ============ DESIGN STUDIO ============ -->
+  <section class="section section-alt" id="studio">
+    <div class="container">
+      <p class="kicker reveal">Neon Design Studio &middot; free to try</p>
+      <h2 class="reveal">See your logo in neon — <span class="neon-cyan">right now</span>.</h2>
+      <p class="section-lede reveal">Drop in your logo or artwork, choose a glow and a size, and watch it light up the wall. When it feels right, send your design straight to us — every sign is custom quoted.</p>
+      <div class="studio reveal">
+        <div class="studio-stage scene-studio" id="studioStage">
+          <div class="studio-backglow" aria-hidden="true"></div>
+          <div class="studio-sign" id="studioSign">
+            <img id="studioImg" alt="Your uploaded artwork previewed as an acrylic neon sign" hidden>
+            <label class="studio-drop" id="studioDrop" for="studioFile">
+              <span class="drop-mark" aria-hidden="true">+</span>
+              <strong>Drop your logo here</strong>
+              <span>or tap to upload &middot; PNG, JPG, SVG</span>
+            </label>
+          </div>
+          <p class="studio-note" id="studioNote">approx. 60 cm wide</p>
+        </div>
+        <div class="studio-controls">
+          <input type="file" id="studioFile" accept="image/*" hidden>
+          <div class="ctrl">
+            <span class="ctrl-label">Artwork</span>
+            <div class="ctrl-row">
+              <button type="button" class="chip" id="btnUpload">Upload my logo</button>
+              <button type="button" class="chip" id="btnSample">Try a sample</button>
+            </div>
+            <p class="ctrl-hint">Transparent PNG looks best. Your image stays on your device — nothing is uploaded.</p>
+          </div>
+          <div class="ctrl">
+            <span class="ctrl-label">Neon glow</span>
+            <div class="ctrl-row" id="glowRow"></div>
+          </div>
+          <div class="ctrl">
+            <span class="ctrl-label">Approx. size</span>
+            <div class="ctrl-row" id="sizeRow"></div>
+          </div>
+          <div class="ctrl">
+            <span class="ctrl-label">Wall</span>
+            <div class="ctrl-row" id="wallRow"></div>
+          </div>
+          <a class="btn btn-wa" id="studioCta" href="https://wa.me/971563659384">
+            <svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.4 14.1c-.2.6-1.3 1.2-1.8 1.3-.5 0-1 .2-3.4-.7-2.9-1.1-4.7-4-4.9-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.4l.9 2.1c0 .2.1.4 0 .6l-.4.6-.5.5c-.2.2-.3.3-.1.6.1.3.7 1.2 1.6 2 1.1 1 2 1.3 2.3 1.4.3.2.5.1.6-.1l.8-.9c.2-.3.4-.2.6-.1l2 .9c.3.2.5.2.6.4 0 .1 0 .7-.3 1.3Z"/></svg>
+            Send My Design for a Quote
+          </a>
+          <p class="ctrl-hint">We reply with a mockup and an exact quote. No logo yet? <a data-wa data-wa-msg="Hi Reliable Sources! I don't have a logo file yet — I'd like you to design a custom neon sign from my idea. Here's my idea:" href="https://wa.me/971563659384">Send your idea instead</a> — we design it for you.</p>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- ============ METHOD ============ -->
-  <section class="section section-alt" id="method">
+  <section class="section" id="method">
     <div class="container method-grid">
       <div class="method-copy">
         <p class="kicker reveal">Why our signs are different</p>
@@ -177,7 +225,7 @@
   </section>
 
   <!-- ============ PROCESS ============ -->
-  <section class="section" id="process">
+  <section class="section section-alt" id="process">
     <div class="container">
       <p class="kicker reveal">How it works</p>
       <h2 class="reveal">From logo to glowing sign in four steps.</h2>
@@ -187,27 +235,6 @@
         <li class="card reveal"><span class="step-num">03</span><h3>We build it</h3><p>Acrylic is cut, artwork printed, and the LED neon is bent and fitted by hand.</p></li>
         <li class="card reveal"><span class="step-num">04</span><h3>Delivery or installation</h3><p>Collect, get it delivered, or have us install it — anywhere in the UAE.</p></li>
       </ol>
-    </div>
-  </section>
-
-  <!-- ============ CUSTOM QUOTE ============ -->
-  <section class="section section-alt" id="custom-quote">
-    <div class="container">
-      <p class="kicker reveal">Custom quotation</p>
-      <h2 class="reveal">Every sign is custom quoted.</h2>
-      <p class="section-lede reveal">There's no fixed catalogue — your sign is built around your logo and your space. Send us three things on WhatsApp and we'll reply with a design mockup and an exact quote.</p>
-      <ol class="quote-grid">
-        <li class="card reveal"><span class="step-num">01</span><h3>Your logo or idea</h3><p>Any file works — PNG, JPG, PDF, AI, or even a photo of a sketch.</p></li>
-        <li class="card reveal"><span class="step-num">02</span><h3>Where it will go</h3><p>A quick photo of the wall, counter or window helps us design for the space.</p></li>
-        <li class="card reveal"><span class="step-num">03</span><h3>Approximate size</h3><p>A rough width in centimetres — we'll recommend the best fit and layout.</p></li>
-      </ol>
-      <div class="center reveal">
-        <a class="btn btn-wa btn-lg" data-wa data-wa-msg="Hi Reliable Sources! I'd like a custom quote for a neon sign. I'm sending my logo / idea, a photo of the space, and my approximate size." href="https://wa.me/971563659384">
-          <svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.4 14.1c-.2.6-1.3 1.2-1.8 1.3-.5 0-1 .2-3.4-.7-2.9-1.1-4.7-4-4.9-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.4l.9 2.1c0 .2.1.4 0 .6l-.4.6-.5.5c-.2.2-.3.3-.1.6.1.3.7 1.2 1.6 2 1.1 1 2 1.3 2.3 1.4.3.2.5.1.6-.1l.8-.9c.2-.3.4-.2.6-.1l2 .9c.3.2.5.2.6.4 0 .1 0 .7-.3 1.3Z"/></svg>
-          Start My Custom Quote
-        </a>
-        <p class="price-note reveal">We'll recommend the best size, colours and acrylic shape for your space — and confirm delivery or installation anywhere in the UAE.</p>
-      </div>
     </div>
   </section>
 

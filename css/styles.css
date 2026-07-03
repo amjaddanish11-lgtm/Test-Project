@@ -26,6 +26,7 @@
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
+[hidden] { display: none !important; }
 
 html { scroll-behavior: smooth; }
 
@@ -589,8 +590,220 @@ a { color: var(--cyan); text-decoration: none; }
   .site-header .btn-sm { padding: 8px 14px; }
 }
 
+/* ---------- hero neon flicker-on ---------- */
+.hero h1 .neon-cyan, .hero h1 .neon-pink {
+  animation: neon-flicker 1.7s ease-out both;
+}
+.hero h1 .neon-pink { animation-delay: 0.35s; }
+@keyframes neon-flicker {
+  0%, 14%, 19%, 38%, 42% { opacity: 0.25; text-shadow: none; }
+  16%, 40%, 46%, 100% { opacity: 1; }
+}
+
+/* pointer-tracked ambient glow (JS sets --mx/--my on .hero) */
+.hero-glow::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(340px 340px at var(--mx, 72%) var(--my, 30%), rgba(45, 226, 255, 0.09), transparent 70%);
+  transition: opacity 0.4s;
+}
+
+/* ============================================================
+   Neon Design Studio
+   ============================================================ */
+.studio {
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr;
+  gap: 28px;
+  align-items: stretch;
+  margin-top: 2.4rem;
+}
+
+/* ----- stage / scene ----- */
+.studio-stage {
+  position: relative;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  min-height: 460px;
+  display: grid;
+  place-items: center;
+  padding: 6%;
+}
+.scene-studio {
+  background:
+    radial-gradient(120% 90% at 50% -10%, rgba(255, 255, 255, 0.05), transparent 55%),
+    linear-gradient(180deg, #101019 0%, #0a0a12 62%, #14141d 86%, #090910 100%);
+}
+.scene-brick {
+  background:
+    radial-gradient(120% 90% at 50% -10%, rgba(255, 255, 255, 0.045), transparent 55%),
+    repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.32) 0 3px, transparent 3px 34px),
+    repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.18) 0 3px, transparent 3px 82px),
+    linear-gradient(180deg, #1d1417 0%, #140e11 70%, #0c080a 100%);
+}
+/* soft floor shadow */
+.studio-stage::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 6%;
+  width: 46%;
+  height: 26px;
+  translate: -50% 0;
+  background: radial-gradient(50% 50% at 50% 50%, rgba(0, 0, 0, 0.55), transparent 70%);
+  pointer-events: none;
+}
+
+/* wall backglow behind the sign, follows chosen colour */
+.studio-backglow {
+  position: absolute;
+  width: 78%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(50% 50% at 50% 50%, rgba(var(--glow-rgb, 45, 226, 255), 0.22), transparent 68%);
+  pointer-events: none;
+  transition: background 0.4s;
+}
+
+/* ----- the acrylic sign ----- */
+.studio-sign {
+  position: relative;
+  width: var(--signw, 62%);
+  min-width: 190px;
+  border-radius: 16px;
+  padding: clamp(12px, 3.5%, 26px);
+  background: rgba(255, 255, 255, 0.055);
+  border: 2px solid rgb(var(--glow-rgb, 45, 226, 255));
+  box-shadow:
+    0 0 10px rgba(var(--glow-rgb, 45, 226, 255), 0.55),
+    0 0 34px rgba(var(--glow-rgb, 45, 226, 255), 0.35),
+    0 0 90px rgba(var(--glow-rgb, 45, 226, 255), 0.18),
+    inset 0 0 26px rgba(var(--glow-rgb, 45, 226, 255), 0.16),
+    0 22px 55px rgba(0, 0, 0, 0.55);
+  transition: width 0.45s cubic-bezier(0.3, 1.2, 0.4, 1), box-shadow 0.4s, border-color 0.4s;
+  cursor: pointer;
+}
+.studio-sign img {
+  width: 100%;
+  max-height: 300px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 14px rgba(var(--glow-rgb, 45, 226, 255), 0.35));
+  transition: filter 0.4s;
+}
+
+/* empty-state drop zone */
+.studio-drop {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+  padding: 26px 10px;
+  color: var(--muted);
+  font-size: 0.88rem;
+  cursor: pointer;
+}
+.studio-drop strong {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  color: var(--text);
+}
+.drop-mark {
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  font-weight: 700;
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 1.5px dashed rgba(var(--glow-rgb, 45, 226, 255), 0.65);
+  color: rgb(var(--glow-rgb, 45, 226, 255));
+  text-shadow: 0 0 12px rgba(var(--glow-rgb, 45, 226, 255), 0.7);
+}
+.studio-stage.dragover .studio-sign {
+  box-shadow:
+    0 0 16px rgba(var(--glow-rgb, 45, 226, 255), 0.8),
+    0 0 60px rgba(var(--glow-rgb, 45, 226, 255), 0.5),
+    0 22px 55px rgba(0, 0, 0, 0.55);
+}
+
+.studio-note {
+  position: absolute;
+  bottom: 14px;
+  right: 18px;
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+/* ----- controls ----- */
+.studio-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 26px 24px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+.ctrl { display: grid; gap: 9px; }
+.ctrl-label {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 0.76rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.ctrl-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.ctrl-hint { font-size: 0.82rem; color: var(--muted); }
+.ctrl-hint a { text-decoration: underline; text-underline-offset: 3px; }
+
+.chip {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 0.88rem;
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 8px 16px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: border-color 0.2s, box-shadow 0.2s, color 0.2s;
+}
+.chip:hover { border-color: rgba(45, 226, 255, 0.5); }
+.chip[aria-pressed="true"] {
+  border-color: rgb(var(--glow-rgb, 45, 226, 255));
+  box-shadow: 0 0 14px rgba(var(--glow-rgb, 45, 226, 255), 0.35);
+  color: #fff;
+}
+.chip .dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--sw);
+  box-shadow: 0 0 8px var(--sw);
+  flex: none;
+}
+
+#studioCta { margin-top: 4px; justify-content: center; }
+
+@media (max-width: 940px) {
+  .studio { grid-template-columns: 1fr; }
+  .studio-stage { min-height: 380px; }
+  .studio-sign { min-width: 160px; }
+  .studio-sign img { max-height: 220px; }
+}
+
 /* ---------- focus visibility ---------- */
-a:focus-visible, summary:focus-visible {
+a:focus-visible, summary:focus-visible, button:focus-visible {
   outline: 2px solid var(--cyan);
   outline-offset: 3px;
   border-radius: 6px;
