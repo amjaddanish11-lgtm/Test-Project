@@ -1,27 +1,34 @@
-# Noor Neon — Custom Acrylic + LED Neon Signs (UAE)
+# Reliable Sources LLC FZ — Custom Acrylic + LED Neon Signs (UAE)
 
 Premium one-page lead-generation website. Zero dependencies, no build step — deploy the folder as-is to any static host (GitHub Pages, Netlify, Vercel, cPanel).
 
-## Before going live — 2 required edits
-
-1. **WhatsApp number** — edit `js/main.js`, top of file:
-   ```js
-   whatsapp: "971500000000", // ← replace with your real number, digits only
-   ```
-2. **Brand name** — "Noor Neon" is a placeholder. Find & replace `Noor Neon` / `NOOR NEON` in `index.html`.
-
-## Where things live
+## Business details — where they live
 
 | What | Where |
 |---|---|
-| WhatsApp number + default message | `js/main.js` (`SITE` config) |
+| WhatsApp number (971563659384) + default message | `js/main.js` (`SITE` config at the top) |
 | Per-button prefilled messages | `data-wa-msg` attributes in `index.html` |
-| Pricing, FAQ, copy | `index.html` (plain HTML sections) |
-| Gallery photos | `assets/img/*.webp` (optimized WebP, ~1000px) |
+| Company name / legal footer | `index.html` (header, footer, meta, JSON-LD) |
+| Copy, FAQ, sections | `index.html` (plain HTML) |
+| Gallery photos | `assets/img/*.webp` (optimized, ~1000px) |
 | Design tokens (colors, fonts) | `:root` in `css/styles.css` |
+
+No prices appear anywhere on the site — all CTAs route to a custom WhatsApp quote. Keep it that way when editing copy.
+
+## Deploy
+
+Upload the whole folder to any static host. Nothing to install or build.
+
+Before/after deploying, set the final domain in the `og:image` URL if you want absolute social-preview links (relative paths work on most platforms).
 
 ## Run locally
 
 ```
 python3 -m http.server 8000
 ```
+
+## Adding a new gallery photo
+
+1. Export/convert to WebP around 1000px on the long side.
+2. Drop it in `assets/img/`.
+3. Copy one `<figure class="card g-card">` block in `index.html`, update `src`, `width`/`height`, alt text and caption.

@@ -2,10 +2,10 @@
    SITE CONFIG — edit these two values and the whole site updates.
    ============================================================ */
 const SITE = {
-  // WhatsApp number in international format, digits only (placeholder — replace!)
-  whatsapp: "971500000000",
+  // Reliable Sources LLC FZ — WhatsApp number, international format, digits only
+  whatsapp: "971563659384",
   // Default prefilled message for WhatsApp links that don't set their own
-  defaultMessage: "Hi! I'd like a quote for a custom neon sign. I'll send my logo / idea here.",
+  defaultMessage: "Hi Reliable Sources! I'd like a custom quote for a neon sign. I'll send my logo / idea here.",
 };
 
 /* ---------- WhatsApp links: build from config ---------- */
