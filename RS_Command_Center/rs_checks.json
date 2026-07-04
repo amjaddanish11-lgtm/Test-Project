@@ -1,0 +1,153 @@
+{
+  "_meta": {
+    "purpose": "Independent expected values for RS_Command_Center.xlsx Dashboard. Hand-computed from the dummy dataset BEFORE the build script existed. post_check.py recomputes everything from `dataset` below in pure Python; values marked dynamic=true depend on TODAY() and must be recomputed at check time with date.today(), not compared against the frozen values here (frozen values were computed for reference_date).",
+    "reference_date": "2026-07-04",
+    "date_format_in_workbook": "DD/MM/YYYY",
+    "currency": "AED"
+  },
+
+  "dataset": {
+    "settings": {
+      "business_lines": ["Signage", "Neon", "Fitout", "Website"],
+      "sources": ["Google Ads", "Instagram", "Referral", "Walk-in", "Existing client", "Designer partner"],
+      "stages": [
+        {"stage": "New", "probability": 0.10, "closed": false},
+        {"stage": "Contacted", "probability": 0.25, "closed": false},
+        {"stage": "Quote sent", "probability": 0.40, "closed": false},
+        {"stage": "Negotiating", "probability": 0.60, "closed": false},
+        {"stage": "Won", "probability": 1.00, "closed": true},
+        {"stage": "Lost", "probability": 0.00, "closed": true}
+      ]
+    },
+    "pipeline": [
+      {"date_in": "2026-06-15", "client": "Al Noor Cafe - Marina", "contact": "Fatima R.", "line": "Signage", "source": "Google Ads", "want": "Shopfront sign + menu boards", "value": 18500, "stage": "Quote sent", "next_followup": "2026-07-02", "notes": "Wants LED letters, budget conscious"},
+      {"date_in": "2026-06-20", "client": "Dr. Salem Dental Clinic", "contact": "Dr. Salem", "line": "Fitout", "source": "Referral", "want": "Reception + waiting area fitout", "value": 95000, "stage": "Negotiating", "next_followup": "2026-07-06", "notes": "Comparing two quotes"},
+      {"date_in": "2026-07-01", "client": "Marina Gym Co.", "contact": "Omar K.", "line": "Neon", "source": "Instagram", "want": "Neon logo wall for reception", "value": 7800, "stage": "New", "next_followup": "2026-07-05", "notes": "DM enquiry, send portfolio"},
+      {"date_in": "2026-06-28", "client": "Lulu Mini Mart", "contact": "Anil P.", "line": "Signage", "source": "Walk-in", "want": "Pylon sign refresh", "value": 24000, "stage": "Contacted", "next_followup": "2026-07-07", "notes": "Site visit done, measuring next"},
+      {"date_in": "2026-07-02", "client": "Bloom Flower Boutique", "contact": "Sara M.", "line": "Website", "source": "Designer partner", "want": "5-page brochure site", "value": 6500, "stage": "New", "next_followup": "2026-07-04", "notes": "Referred by Layla (designer)"},
+      {"date_in": "2026-06-10", "client": "Desert Rose Salon", "contact": "Mariam A.", "line": "Neon", "source": "Instagram", "want": "Custom neon sign for wall", "value": 5200, "stage": "Quote sent", "next_followup": "2026-07-08", "notes": "Quote sent 25/06"},
+      {"date_in": "2026-06-18", "client": "Gulf Auto Detailing", "contact": "Khalid S.", "line": "Signage", "source": "Google Ads", "want": "Full branding + workshop signage", "value": 32000, "stage": "Negotiating", "next_followup": "2026-07-09", "notes": "Wants phased delivery"},
+      {"date_in": "2026-06-25", "client": "Sunrise Nursery", "contact": "Huda N.", "line": "Fitout", "source": "Existing client", "want": "Two-classroom fitout", "value": 68000, "stage": "Contacted", "next_followup": "2026-07-10", "notes": "Repeat client, summer window"},
+      {"date_in": "2026-06-12", "client": "Kaya Beach Restaurant", "contact": "Joseph T.", "line": "Signage", "source": "Referral", "want": "Illuminated fascia sign", "value": 21000, "stage": "Won", "next_followup": null, "notes": "Now job RS-001"},
+      {"date_in": "2026-06-05", "client": "Falcon Real Estate", "contact": "Ahmed B.", "line": "Website", "source": "Google Ads", "want": "Landing page for tower launch", "value": 4000, "stage": "Lost", "next_followup": null, "notes": "Went with agency"}
+    ],
+    "jobs": [
+      {"ref": "RS-001", "client": "Kaya Beach Restaurant", "line": "Signage", "value": 21000, "est_cost": 12600, "status": "In progress", "start": "2026-06-22", "handover": "2026-07-15", "notes": "Fascia fabrication underway"},
+      {"ref": "RS-002", "client": "Emirates Hills Villa 27", "line": "Fitout", "value": 140000, "est_cost": 98000, "status": "In progress", "start": "2026-06-01", "handover": "2026-08-20", "notes": "Majlis + garden room"},
+      {"ref": "RS-003", "client": "Blue Pearl Spa", "line": "Neon", "value": 9500, "est_cost": 4700, "status": "Done", "start": "2026-05-05", "handover": "2026-05-20", "notes": "Handed over, client happy"},
+      {"ref": "RS-004", "client": "Zaitoon Grill House", "line": "Signage", "value": 27500, "est_cost": 16200, "status": "Done", "start": "2026-04-10", "handover": "2026-05-05", "notes": "Fascia + interior menu boards"},
+      {"ref": "RS-005", "client": "Coral Bay Dental", "line": "Website", "value": 5800, "est_cost": 1200, "status": "In progress", "start": "2026-07-02", "handover": "2026-07-16", "notes": "Content received"}
+    ],
+    "invoices": [
+      {"inv": "INV-2026-041", "client": "Zaitoon Grill House", "job_ref": "RS-004", "inv_date": "2026-04-12", "amount": 27500, "paid": 27500, "paid_date": "2026-05-05", "due": "2026-05-10", "notes": "Closed"},
+      {"inv": "INV-2026-042", "client": "Blue Pearl Spa", "job_ref": "RS-003", "inv_date": "2026-05-06", "amount": 9500, "paid": 9500, "paid_date": "2026-05-28", "due": "2026-06-01", "notes": "Closed"},
+      {"inv": "INV-2026-043", "client": "Emirates Hills Villa 27", "job_ref": "RS-002", "inv_date": "2026-06-01", "amount": 70000, "paid": 35000, "paid_date": "2026-06-20", "due": "2026-06-15", "notes": "Progress payment 1 of 2"},
+      {"inv": "INV-2026-044", "client": "Kaya Beach Restaurant", "job_ref": "RS-001", "inv_date": "2026-06-22", "amount": 10500, "paid": 0, "paid_date": null, "due": "2026-06-28", "notes": "50% advance - chase"},
+      {"inv": "INV-2026-045", "client": "Coral Bay Dental", "job_ref": "RS-005", "inv_date": "2026-07-03", "amount": 2900, "paid": 1500, "paid_date": "2026-07-04", "due": "2026-07-20", "notes": "Deposit received"},
+      {"inv": "INV-2026-046", "client": "Emirates Hills Villa 27", "job_ref": "RS-002", "inv_date": "2026-07-01", "amount": 35000, "paid": 0, "paid_date": null, "due": "2026-07-25", "notes": "Progress payment 2 of 2"}
+    ]
+  },
+
+  "checks": {
+    "followups_due_today_or_overdue": {
+      "dynamic": true,
+      "rule": "COUNT of pipeline rows where next_followup is not null AND next_followup <= today AND stage is an open stage (not Won/Lost)",
+      "value_at_reference_date": 2
+    },
+    "open_pipeline_count": {"dynamic": false, "rule": "COUNT of pipeline rows with open stage", "value": 8},
+    "open_pipeline_total_aed": {"dynamic": false, "rule": "SUM value of open-stage pipeline rows", "value": 257000},
+    "open_pipeline_weighted_aed": {"dynamic": false, "rule": "SUM (value * stage probability) over open-stage rows: 18500*0.4 + 95000*0.6 + 7800*0.1 + 24000*0.25 + 6500*0.1 + 5200*0.4 + 32000*0.6 + 68000*0.25", "value": 110110},
+    "new_leads_this_month": {
+      "dynamic": true,
+      "rule": "COUNT of pipeline rows where date_in is in the same calendar month+year as today",
+      "value_at_reference_date": 2
+    },
+    "jobs_won_this_month_count": {
+      "dynamic": true,
+      "rule": "COUNT of jobs rows where start is in the same calendar month+year as today",
+      "value_at_reference_date": 1
+    },
+    "jobs_won_this_month_aed": {
+      "dynamic": true,
+      "rule": "SUM of jobs.value where start is in the same calendar month+year as today",
+      "value_at_reference_date": 5800
+    },
+    "win_rate": {"dynamic": false, "rule": "pipeline Won count / (Won + Lost count), all-time; 0 shown if no closed leads (divide-by-zero guard)", "value": 0.5},
+    "invoiced_this_month_aed": {
+      "dynamic": true,
+      "rule": "SUM of invoices.amount where inv_date is in the same calendar month+year as today",
+      "value_at_reference_date": 37900
+    },
+    "collected_this_month_aed": {
+      "dynamic": true,
+      "rule": "SUM of invoices.paid where paid_date is not null and in the same calendar month+year as today",
+      "value_at_reference_date": 1500
+    },
+    "total_outstanding_aed": {"dynamic": false, "rule": "SUM of (amount - paid) over all invoices: 35000 + 10500 + 1400 + 35000", "value": 81900},
+    "overdue_aed": {
+      "dynamic": true,
+      "rule": "SUM of (amount - paid) over invoices where balance > 0 AND due < today",
+      "value_at_reference_date": 45500
+    },
+    "per_line_open_pipeline_aed": {
+      "dynamic": false,
+      "rule": "SUMIFS of open-stage pipeline value by business line",
+      "value": {"Signage": 74500, "Neon": 13000, "Fitout": 163000, "Website": 6500}
+    },
+    "per_line_won_this_year_aed": {
+      "dynamic": true,
+      "rule": "SUM of jobs.value by business line where YEAR(start) = YEAR(today)",
+      "value_at_reference_date": {"Signage": 48500, "Neon": 9500, "Fitout": 140000, "Website": 5800}
+    },
+    "invoice_statuses": {
+      "dynamic": true,
+      "rule": "Per invoice: Paid if balance<=0 and amount>0; else Overdue if due < today (Overdue beats Partial); else Partial if paid>0; else Upcoming. Days overdue = today - due for Overdue rows, blank otherwise.",
+      "value_at_reference_date": {
+        "INV-2026-041": {"status": "Paid", "balance": 0, "days_overdue": null},
+        "INV-2026-042": {"status": "Paid", "balance": 0, "days_overdue": null},
+        "INV-2026-043": {"status": "Overdue", "balance": 35000, "days_overdue": 19},
+        "INV-2026-044": {"status": "Overdue", "balance": 10500, "days_overdue": 6},
+        "INV-2026-045": {"status": "Partial", "balance": 1400, "days_overdue": null},
+        "INV-2026-046": {"status": "Upcoming", "balance": 35000, "days_overdue": null}
+      }
+    },
+    "pipeline_call_today_flags": {
+      "dynamic": true,
+      "rule": "CALL TODAY shown when next_followup <= today AND stage open; blank otherwise",
+      "clients_flagged_at_reference_date": ["Al Noor Cafe - Marina", "Bloom Flower Boutique"]
+    },
+    "job_margins": {
+      "dynamic": false,
+      "rule": "margin = value - est_cost; margin_pct = margin / value",
+      "value": {
+        "RS-001": {"margin": 8400, "margin_pct": 0.4},
+        "RS-002": {"margin": 42000, "margin_pct": 0.3},
+        "RS-003": {"margin": 4800, "margin_pct": 0.50526},
+        "RS-004": {"margin": 11300, "margin_pct": 0.41091},
+        "RS-005": {"margin": 4600, "margin_pct": 0.7931}
+      },
+      "margin_pct_tolerance": 0.0001
+    }
+  },
+
+  "dashboard_cell_map": {
+    "_comment": "Sheet 'Dashboard'. Layout frozen by architect before build code was written.",
+    "followups_due_today_or_overdue": "C5",
+    "open_pipeline_count": "C7",
+    "open_pipeline_total_aed": "F7",
+    "open_pipeline_weighted_aed": "I7",
+    "new_leads_this_month": "C9",
+    "jobs_won_this_month_count": "F9",
+    "jobs_won_this_month_aed": "I9",
+    "win_rate": "C11",
+    "invoiced_this_month_aed": "F11",
+    "collected_this_month_aed": "I11",
+    "total_outstanding_aed": "C13",
+    "overdue_aed": "F13",
+    "per_line_table": {
+      "header_row": 16,
+      "rows": {"Signage": 17, "Neon": 18, "Fitout": 19, "Website": 20},
+      "line_col": "B", "open_aed_col": "C", "won_year_col": "D", "rept_bar_col": "E"
+    }
+  }
+}
