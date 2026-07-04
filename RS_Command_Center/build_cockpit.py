@@ -268,10 +268,12 @@ def build_pipeline(wb, data):
         jc = ws.cell(row=r, column=10)
         jc.value = '=IF($I{r}="","",IFERROR(VLOOKUP($I{r},Settings!$G$10:$H$15,2,FALSE),""))'.format(r=r)
         jc.number_format = PCT_FMT
+        jc.font = Font(name="Arial", size=10, color=DARK_TEXT)
 
         kc = ws.cell(row=r, column=11)
         kc.value = '=IF(OR($H{r}="",$J{r}=""),"",$H{r}*$J{r})'.format(r=r)
         kc.number_format = MONEY_FMT
+        kc.font = Font(name="Arial", size=10, color=DARK_TEXT)
 
         mc = ws.cell(row=r, column=13)
         mc.value = ('=IF(OR($I{r}="",$L{r}=""),"",IF(AND($L{r}<=TODAY(),'
@@ -348,10 +350,12 @@ def build_jobs(wb, data):
         gc = ws.cell(row=r, column=7)
         gc.value = '=IF(OR($E{r}="",$F{r}=""),"",$E{r}-$F{r})'.format(r=r)
         gc.number_format = MONEY_FMT
+        gc.font = Font(name="Arial", size=10, color=DARK_TEXT)
 
         hc = ws.cell(row=r, column=8)
         hc.value = '=IF(OR($E{r}="",$E{r}=0,$G{r}=""),"",$G{r}/$E{r})'.format(r=r)
         hc.number_format = PCT_FMT
+        hc.font = Font(name="Arial", size=10, color=DARK_TEXT)
 
         for col in (3, 4, 5, 6, 9, 10, 11, 12):
             cell = ws.cell(row=r, column=col)
@@ -415,14 +419,17 @@ def build_invoices(wb, data):
         ic = ws.cell(row=r, column=9)
         ic.value = '=IF($F{r}="","",$F{r}-N($G{r}))'.format(r=r)
         ic.number_format = MONEY_FMT
+        ic.font = Font(name="Arial", size=10, color=DARK_TEXT)
 
         kc = ws.cell(row=r, column=11)
         kc.value = ('=IF($F{r}="","",IF($I{r}<=0,"Paid",IF(AND($J{r}<>"",TODAY()>$J{r}),'
                      '"Overdue",IF(N($G{r})>0,"Partial","Upcoming"))))').format(r=r)
+        kc.font = Font(name="Arial", size=10, color=DARK_TEXT)
 
         lc = ws.cell(row=r, column=12)
         lc.value = ('=IF(OR($F{r}="",$I{r}<=0,$J{r}=""),"",IF(TODAY()>$J{r},TODAY()-$J{r},""))').format(r=r)
         lc.number_format = COUNT_FMT
+        lc.font = Font(name="Arial", size=10, color=DARK_TEXT)
 
         for col in (2, 3, 4, 5, 6, 7, 8, 10, 13):
             cell = ws.cell(row=r, column=col)
@@ -555,12 +562,14 @@ def build_dashboard(wb):
                      'Pipeline!$I$5:$I$304,"<>",Pipeline!$I$5:$I$304,"<>"&Settings!$G$14,'
                      'Pipeline!$I$5:$I$304,"<>"&Settings!$G$15))').format(r=r)
         cc.number_format = MONEY_FMT
+        cc.font = Font(name="Arial", size=10, color=DARK_TEXT)
 
         dc = ws.cell(row=r, column=4)
         dc.value = ('=IF($B{r}="","",SUMIFS(Jobs!$E$5:$E$204,Jobs!$D$5:$D$204,$B{r},'
                      'Jobs!$J$5:$J$204,">="&DATE(YEAR(TODAY()),1,1),'
                      'Jobs!$J$5:$J$204,"<"&DATE(YEAR(TODAY())+1,1,1)))').format(r=r)
         dc.number_format = MONEY_FMT
+        dc.font = Font(name="Arial", size=10, color=DARK_TEXT)
 
         ec = ws.cell(row=r, column=5)
         ec.value = ('=IF(OR($B{r}="",MAX($C$17:$C$20)=0),"",'

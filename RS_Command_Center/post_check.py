@@ -383,6 +383,20 @@ def check_workbook(cj, exp):
         check(f"Invoices row {row} due", as_date(iv[f"J{row}"].value) == date.fromisoformat(v["due"]),
               f"got {iv[f'J{row}'].value!r}")
 
+    # Arial everywhere - spot-check computed/formula cells (historical defect:
+    # cells given only a value + number_format fall back to Calibri)
+    for sn, cells in [
+        ("Pipeline", ["J5", "K5", "M5", "K304"]),
+        ("Jobs", ["B5", "G5", "H5", "H204"]),
+        ("Invoices", ["I5", "K5", "L5", "L204"]),
+        ("Dashboard", ["C5", "C17", "D17", "E17"]),
+        ("Settings", ["C10", "G14"]),
+        ("Start Here", ["B5", "B7"]),
+    ]:
+        for a in cells:
+            got = wb[sn][a].font.name
+            check(f"{sn} {a} font Arial", got == "Arial", f"got {got!r}")
+
     # conditional formatting present
     dcf = {str(rng): [r.type for r in rules]
            for rng, rules in dash.conditional_formatting._cf_rules.items()}

@@ -101,7 +101,7 @@
     },
     "invoice_statuses": {
       "dynamic": true,
-      "rule": "Per invoice: Paid if balance<=0 and amount>0; else Overdue if due < today (Overdue beats Partial); else Partial if paid>0; else Upcoming. Days overdue = today - due for Overdue rows, blank otherwise.",
+      "rule": "Per invoice: Paid if balance<=0; else Overdue if due < today (Overdue beats Partial); else Partial if paid>0; else Upcoming. Days overdue = today - due for Overdue rows, blank otherwise. (A zero-amount row shows Paid - matches the family idiom in reference product 07.)",
       "value_at_reference_date": {
         "INV-2026-041": {"status": "Paid", "balance": 0, "days_overdue": null},
         "INV-2026-042": {"status": "Paid", "balance": 0, "days_overdue": null},
